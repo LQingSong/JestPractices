@@ -46,3 +46,26 @@
 
 - 'index.spec.ts' cannot be compiled under '--isolatedModules' because it is considered a global script file. Add an import, export, or an empty 'export {}' statement to make it a module.
 - 设置成 false
+
+6. 安装 vue Test utils
+
+- pnpm add -D @vue/test-utils@next
+- 此时报错  
+  ![image](./errorImages/vue-test-utils-err.png)
+- 解决方法:
+
+  - pnpm jest --init 选择 jsdom 的 web 测试环境
+  - pnpm install -D jest-environment-jsdom 安装 jest 所需的 jsdom 环境
+  - pnpm add -D ts-jest 安装 ts-jest
+
+  ```ts 配置jest.config.ts
+  export default {
+    ...
+    preset: "ts-jest",
+    testEnvironment: "jsdom",
+    transform: {
+      "^.+\\.ts$": "ts-jest"
+    }
+    ...其他配置省略
+  }
+  ```
