@@ -5,6 +5,7 @@
 1. pnpm create vite projectName
 2. 查看 vite.config.ts 发现有报红
    - 安装 pnpm install @types/node --save-dev
+   - 安装完重启一下
 3. 配置 alias (可选)
 
    ```ts tsconfig.json
@@ -17,16 +18,16 @@
    ```
 
    ```ts vite.config.ts
-   import { defineConfig } from "vite";
-   import vue from "@vitejs/plugin-vue";
+   import { defineConfig } from 'vite';
+   import vue from '@vitejs/plugin-vue';
    // node.js 不是内置对象的一部分，如果想用ts写node.js,需要引入@types/node
-   const path = require("path");
+   const path = require('path');
 
    export default defineConfig({
      plugins: [vue()],
      resolve: {
        alias: {
-         "@": path.resolve(__dirname, "src"),
+         '@': path.resolve(__dirname, 'src'),
        },
      },
    });
@@ -39,7 +40,7 @@
 - 配置 tsconfig.json
 
   ```ts tsconfig.json
-  includes: ["__test__/**.ts"];
+  includes: ['__test__/**.ts'];
   ```
 
 5. 解决某些库不支持 isolatedModules：true
@@ -69,3 +70,8 @@
     ...其他配置省略
   }
   ```
+
+#### vue-test-utils 实操
+
+1. 用一个注册组件实践
+2. jest vue3 失败了,这个环境搭建有问题
